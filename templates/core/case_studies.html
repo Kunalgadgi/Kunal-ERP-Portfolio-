@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold mb-4">Case <span class="premium-gradient-text">Studies</span></h1>
+            <p class="text-secondary mb-4">Real-world ERPNext implementations and solutions across various industries.</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Metal Industries -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrapper">
+                        <img src="{% static 'images/metal.jpg' %}" alt="Metal Industries">
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <span class="project-badge">Manufacturing</span>
+                        </div>
+                        <h5 class="fw-bold mb-3">Metal Industries</h5>
+                        <p class="text-secondary small mb-0">Complete ERPNext implementation for metal manufacturing industry with production planning, inventory management, and quality control.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bio Gas -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrapper">
+                        <img src="{% static 'images/biogas.jpg' %}" alt="Bio Gas">
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <span class="project-badge">Energy</span>
+                        </div>
+                        <h5 class="fw-bold mb-3">Bio Gas</h5>
+                        <p class="text-secondary small mb-0">ERPNext setup for bio gas production facility with raw material tracking, production monitoring, and distribution management.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GPS Tracking with SIM Card Stock Renewal History -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrapper">
+                        <img src="{% static 'images/gps.jpg' %}" alt="GPS Tracking">
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <span class="project-badge">Logistics</span>
+                        </div>
+                        <h5 class="fw-bold mb-3">GPS Tracking with SIM Card Stock Renewal History</h5>
+                        <p class="text-secondary small mb-0">Integrated GPS tracking system with SIM card inventory management, renewal history tracking, and automated alerts for fleet management.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manufacturing with Subcontracting -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrapper">
+                        <img src="{% static 'images/manu with sub.jpg' %}" alt="Manufacturing with Subcontracting">
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <span class="project-badge">Manufacturing</span>
+                        </div>
+                        <h5 class="fw-bold mb-3">Manufacturing with Subcontracting</h5>
+                        <p class="text-secondary small mb-0">End-to-end manufacturing ERP with subcontractor management, work order tracking, and quality assurance for outsourced production.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corrugate Box -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrapper">
+                        <img src="{% static 'images/corrug.jpg' %}" alt="Corrugate Box">
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <span class="project-badge">Packaging</span>
+                        </div>
+                        <h5 class="fw-bold mb-3">Corrugate Box Manufacturing</h5>
+                        <p class="text-secondary small mb-0">Complete ERPNext solution for corrugated box manufacturing with order management, production scheduling, and delivery tracking.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HBR48 HBR Liquid -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrapper">
+                        <img src="{% static 'images/hbr.jpg' %}" alt="HBR48 HBR Liquid">
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <span class="project-badge">Chemical</span>
+                        </div>
+                        <h5 class="fw-bold mb-3">HBR48 HBR Liquid</h5>
+                        <p class="text-secondary small mb-0">Specialized ERPNext implementation for chemical manufacturing with batch tracking, formula management, and regulatory compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

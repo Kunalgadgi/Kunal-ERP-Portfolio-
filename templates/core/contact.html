@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="contact-hero" style="padding-top: 160px;">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4 text-center"> Get in <span class="premium-gradient-text">Touch</span></h1>
+        <p class="text-secondary mt-4 mx-auto" style="max-width:640px;">
+            Ready to start your project? I'm currently available for freelance work. Contact me
+            for a consultation about Frappe, ERPNext, or Web Development.
+        </p>
+    </div>
+</section>
+
+<section class="pb-5">
+    <div class="container">
+        <div class="row g-4 justify-content-center mb-5">
+            <div class="col-md-4">
+                <div class="contact-info-tile">
+                    <div class="icon-wrap icon-blue"><i class="bi bi-geo-alt-fill"></i></div>
+                    <h6 class="fw-bold mb-1">Location</h6>
+                    <p class="text-secondary mb-0 small">{{ profile.location|default:"Ahmedabad, Gujarat" }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-info-tile">
+                    <div class="icon-wrap icon-purple"><i class="bi bi-envelope-fill"></i></div>
+                    <h6 class="fw-bold mb-1">Email</h6>
+                    <a href="mailto:{{ profile.email|default:"gadgikunal202@gmail.com" }}" class="text-secondary mb-0 small text-decoration-none">{{ profile.email|default:"gadgikunal202@gmail.com" }}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-info-tile">
+                    <div class="icon-wrap icon-green"><i class="bi bi-telephone-fill"></i></div>
+                    <h6 class="fw-bold mb-1">Phone</h6>
+                    <a href="tel:{{ profile.phone|default:"917226805665" }}" class="text-secondary mb-0 small text-decoration-none">{{ profile.phone|default:"+91 7226805665" }}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-5">
+            <h6 class="fw-bold mb-3">Follow Me On</h6>
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a href="https://github.com/Kunalgadgi" target="_blank" class="social-pill github"><i class="bi bi-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/kunal-gadgi-025b062a1/" target="_blank" class="social-pill linkedin"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                <a href="https://wa.me/917226805665" target="_blank" class="social-pill whatsapp"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+                <a href="https://twitter.com/yourusername" target="_blank" class="social-pill twitter"><i class="bi bi-twitter-x"></i> X</a>
+                <a href="https://instagram.com/yourusername" target="_blank" class="social-pill instagram"><i class="bi bi-instagram"></i> Instagram</a>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-8">
+                <div class="custom-card p-4 p-md-5">
+                    <h5 class="fw-bold mb-4 text-white">Send a Message</h5>
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">{{ form.name.label_tag }}{{ form.name }}</div>
+                            <div class="col-md-6">{{ form.email.label_tag }}{{ form.email }}</div>
+                            <div class="col-12">{{ form.subject.label_tag }}{{ form.subject }}</div>
+                            <div class="col-12">{{ form.message.label_tag }}{{ form.message }}</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom mt-4"><i class="bi bi-send me-1"></i> Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

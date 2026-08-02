@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="about-hero py-6">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-4 text-center">
+                <div class="about-photo-wrapper position-relative">
+                    <div class="about-photo-bg"></div>
+                    <img src="/static/images/DSC04103.JPG" alt="Kunal Gadgi" class="about-photo-img">
+                </div>
+                {% if profile.resume_file %}
+                <a href="{{ profile.resume_file.url }}" class="btn btn-primary-custom mt-4" download><i class="bi bi-download me-1"></i> Download Resume</a>
+                {% endif %}
+            </div>
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4"> About <span class="premium-gradient-text">Me</span></h1>
+                <div class="about-content text-secondary">
+                    <p class="mb-4">
+                        I am Kunal Gadgi, a passionate ERPNext Techno-Functional Consultant based in Ahmedabad, Gujarat. With a strong foundation in <strong>Frappe / ERPNext Development</strong> and <strong>Python & Django</strong>, I bridge the gap between complex backend logic and beautiful frontend experiences.
+                    </p>
+                    <p class="mb-4">
+                        My journey includes significant experience in Python development and ERPNext implementation, which gives me a unique perspective on building secure, reliable, and efficient software. I have worked with diverse clients to implement ERPNext solutions that streamline business processes.
+                    </p>
+                </div>
+                <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center justify-content-lg-start">
+                    <a href="https://github.com/Kunalgadgi" target="_blank" class="social-pill github"><i class="bi bi-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/kunal-gadgi-025b062a1/" target="_blank" class="social-pill linkedin"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                    <a href="https://wa.me/917226805665" target="_blank" class="social-pill whatsapp"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+                    <a href="https://twitter.com/yourusername" target="_blank" class="social-pill twitter"><i class="bi bi-twitter-x"></i> X</a>
+                    <a href="https://instagram.com/yourusername" target="_blank" class="social-pill instagram"><i class="bi bi-instagram"></i> Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-5"> Professional <span class="premium-gradient-text">Experience</span></h2>
+                <div class="experience-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot current"></div>
+                        <div class="timeline-date">Dec 2024 - Present</div>
+                        <h3 class="h4 fw-bold">ERPNext Techno-Functional Consultant</h3>
+                        <p class="text-success fw-semibold mb-3">Skydot Infotech, Ahmedabad, India</p>
+                        <p class="text-secondary mb-3">Actively involved in implementation, customization, and handling of live ERPNext projects, ensuring smooth delivery from development to deployment.</p>
+                        <ul class="text-secondary">
+                            <li>CRM, Accounting, Selling, Buying, Manufacturing, Project, Assets, Support modules</li>
+                            <li>Developed and customized modules in ERPNext using Python and Frappe Framework</li>
+                            <li>Created custom scripts and reports as per client requirements</li>
+                            <li>Assisted in data migration and configuration of company setups</li>
+                            <li>Participated in debugging, testing, and deploying ERP features</li>
+                            <li>Collaborated with functional consultants to understand business logic and implement features</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot blue"></div>
+                        <div class="timeline-date">May 2024 - Oct 2024</div>
+                        <h3 class="h4 fw-bold">Python & Django Developer Intern</h3>
+                        <p class="text-primary fw-semibold mb-3">Brahma Technolab, Ahmedabad, India</p>
+                        <p class="text-secondary mb-3">Developed user-friendly GUI registration systems and admin panels using Django framework.</p>
+                        <ul class="text-secondary">
+                            <li>GUI Registration Form with Tkinter - sign in page, registration details, password management</li>
+                            <li>Admin Panel with Dashboard - user authentication, role-based access control, real-time data visualizations</li>
+                            <li>Designed backend for data management and optimized frontend for intuitive user experience</li>
+                            <li>Utilized Django's built-in admin functionalities to simplify content management</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot indigo"></div>
+                        <div class="timeline-date">June 2019 - June 2022</div>
+                        <h3 class="h4 fw-bold">Previous Experience</h3>
+                        <p class="text-info fw-semibold mb-3">Various Roles</p>
+                        <p class="text-secondary">Gained foundational experience in software development and IT support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="h3 fw-bold"> Technical <span class="premium-gradient-text">Arsenal</span></h2>
+            <p class="text-secondary small">My technical toolkit and expertise.</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="skill-card-compact blue">
+                    <div class="skill-card-compact-icon">
+                        <i class="bi bi-server"></i>
+                    </div>
+                    <h3 class="h6 fw-bold mb-3">Frappe & ERPNext</h3>
+                    <p class="text-secondary small mb-3">End-to-end ERPNext implementation, custom Frappe apps, and module development.</p>
+                    <div class="skill-tags-compact">
+                        <span class="skill-tag-compact">Frappe Framework</span>
+                        <span class="skill-tag-compact">ERPNext</span>
+                        <span class="skill-tag-compact">Python</span>
+                        <span class="skill-tag-compact">Custom Apps</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="skill-card-compact indigo">
+                    <div class="skill-card-compact-icon">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+                    <h3 class="h6 fw-bold mb-3">Technical Consultation</h3>
+                    <p class="text-secondary small mb-3">System architecture design, cybersecurity audits, and server maintenance.</p>
+                    <div class="skill-tags-compact">
+                        <span class="skill-tag-compact">Architecture</span>
+                        <span class="skill-tag-compact">Security</span>
+                        <span class="skill-tag-compact">Optimization</span>
+                        <span class="skill-tag-compact">Consulting</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="skill-card-compact green">
+                    <div class="skill-card-compact-icon">
+                        <i class="bi bi-cloud"></i>
+                    </div>
+                    <h3 class="h6 fw-bold mb-3">Cloud & Web</h3>
+                    <p class="text-secondary small mb-3">Cloud deployment, server management, and web application hosting.</p>
+                    <div class="skill-tags-compact">
+                        <span class="skill-tag-compact">Linux Servers</span>
+                        <span class="skill-tag-compact">Nginx</span>
+                        <span class="skill-tag-compact">Deployment</span>
+                        <span class="skill-tag-compact">Hosting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-4">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="h3 fw-bold"> Personal <span class="premium-gradient-text">Projects</span></h2>
+            <p class="text-secondary small">Showcasing my personal projects and contributions.</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="project-card-compact">
+                    <div class="d-flex align-items-center gap-3 mb-2">
+                        <div class="project-icon-small">
+                            <i class="bi bi-github"></i>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0">GUI Registration System</h3>
+                            <span class="badge bg-light text-secondary">Django</span>
+                        </div>
+                    </div>
+                    <p class="text-secondary small mb-2">User-friendly GUI registration system with database integration using Django ORM.</p>
+                    <a href="https://github.com/Kunalgadgi" target="_blank" class="text-primary small text-decoration-none fw-semibold">View Project →</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="project-card-compact">
+                    <div class="d-flex align-items-center gap-3 mb-2">
+                        <div class="project-icon-small">
+                            <i class="bi bi-github"></i>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0">Admin Dashboard</h3>
+                            <span class="badge bg-light text-secondary">Django + MySQL</span>
+                        </div>
+                    </div>
+                    <p class="text-secondary small mb-2">Employee Management System with attendance tracking and data visualizations.</p>
+                    <a href="https://github.com/Kunalgadgi" target="_blank" class="text-primary small text-decoration-none fw-semibold">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

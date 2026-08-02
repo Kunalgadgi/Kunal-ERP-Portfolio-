@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-section" id="home">
+    <div class="container position-relative">
+        <span class="badge-pill mb-4 d-inline-block">
+            <span class="dot"></span>Open for Frappe & ERPNext Projects
+        </span>
+        <h1 class="mb-4">
+            {% if profile %}{{ profile.full_name }}{% else %}Kunal Gadgi{% endif %} &ndash;<br>
+            <span class="gradient-text">{% if profile %}{{ profile.title }}{% else %}ERPNext Techno-Functional / Implementation{% endif %}</span>
+        </h1>
+        <p class="lead-text">
+            {% if profile %}{{ profile.tagline }}{% else %}ERPNext Techno-Functional / Implementation Specialist. I craft high-performance ERP setups and business solutions.{% endif %}
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center mb-4">
+            <a href="{% url 'contact' %}" class="btn-white-pill">Start a Project</a>
+            <a href="{% url 'project_list' %}" class="btn-dark-pill">View My Work</a>
+        </div>
+        <p class="text-secondary small">ERPNext Functional Consultant &amp; Implementation Freelancer</p>
+
+        {% if profile.profile_photo %}
+        <div class="hero-photo-frame mt-5">
+            <img src="{{ profile.profile_photo.url }}" alt="{{ profile.full_name }}">
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- STATS -->
+{% if profile %}
+<section class="stats-section">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-6 col-md-3 stat-item">
+                <h3>{{ profile.years_experience }}+</h3>
+                <p class="mb-0 text-white-50">Years Experience</p>
+            </div>
+            <div class="col-6 col-md-3 stat-item">
+                <h3>{{ profile.projects_completed }}+</h3>
+                <p class="mb-0 text-white-50">Projects Completed</p>
+            </div>
+            <div class="col-6 col-md-3 stat-item">
+                <h3>{{ profile.clients_served }}+</h3>
+                <p class="mb-0 text-white-50">Clients Served</p>
+            </div>
+            <div class="col-6 col-md-3 stat-item">
+                <h3>{{ profile.modules_implemented }}+</h3>
+                <p class="mb-0 text-white-50">Modules Implemented</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ABOUT SNAPSHOT -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="section-label">Who I Am</span>
+                <h2 class="section-title mb-4">About Me</h2>
+                <p class="text-secondary">{% if profile %}{{ profile.about|truncatewords:60 }}{% else %}Experienced ERPNext functional consultant specializing in end-to-end implementations across Accounts, Stock, Selling, Buying, HR, and Manufacturing modules.{% endif %}</p>
+                <a href="{% url 'about' %}" class="btn btn-outline-custom mt-2">
+                    Read Full Bio <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="feature-mini-card">
+                            <i class="bi bi-diagram-3 fs-2 text-success-emphasis" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">Process Mapping</h6>
+                            <p class="small text-secondary mb-0">Translating business needs into ERPNext workflows.</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="feature-mini-card">
+                            <i class="bi bi-gear-wide-connected fs-2" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">Configuration</h6>
+                            <p class="small text-secondary mb-0">Custom fields, workflows, print formats & reports.</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="feature-mini-card">
+                            <i class="bi bi-mortarboard fs-2" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">User Training</h6>
+                            <p class="small text-secondary mb-0">Onboarding teams for smooth adoption.</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="feature-mini-card">
+                            <i class="bi bi-life-preserver fs-2" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">Post Go-Live Support</h6>
+                            <p class="small text-secondary mb-0">Ongoing optimization & troubleshooting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section-padding bg-light-custom" id="skills">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-label">What I Work With</span>
+            <h2 class="section-title">ERPNext Modules & Skills</h2>
+        </div>
+        <div class="text-center mt-5">
+            {% comment %} <p class="text-center text-secondary">Skills will appear here once added via Django Admin.</p> {% endcomment %}
+            <a href="{% url 'project_list' %}" class="btn btn-primary-custom">View All Modules <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <div class="row g-4">
+            {% for category in skill_categories %}
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <h5 class="skill-category-title"><i class="bi bi-collection me-2"></i>{{ category.name }}</h5>
+                    {% for skill in category.skills.all %}
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span><i class="bi {{ skill.icon_class|default:'bi-check-circle' }} me-2"></i>{{ skill.name }}</span>
+                            <span>{{ skill.proficiency }}%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" data-width="{{ skill.proficiency }}" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% empty %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- WHY PARTNER WITH ME -->
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Why <span class="premium-gradient-text">Partner With Me?</span></h2>
+            <p class="text-secondary">I bring a unique blend of technical expertise in <strong>Frappe/ERPNext</strong> and modern development to deliver solutions that drive business growth in India and beyond.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="partner-icon flex-shrink-0 orange">
+                            <i class="bi bi-lightning"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">Rapid Development</h5>
+                            <p class="text-secondary small mb-0">Leveraging the low-code capabilities of <strong>Frappe Framework</strong> to deliver complex enterprise applications 5x faster than traditional methods.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="partner-icon flex-shrink-0 green">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">Enterprise Security</h5>
+                            <p class="text-secondary small mb-0">Implementing role-based access control, secure API endpoints, and regular audits to keep your <strong>ERPNext</strong> data safe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="partner-icon flex-shrink-0 purple">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">Native Performance</h5>
+                            <p class="text-secondary small mb-0">Creating applications that feel fluid and responsive, providing a top-tier user experience on all platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="partner-icon flex-shrink-0 blue">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">Local & Global Support</h5>
+                            <p class="text-secondary small mb-0">Based in <strong>Ahmedabad</strong>, offering on-site support for Gujarat clients and seamless remote collaboration for international projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-label">Common Queries</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="text-secondary">Common queries about my freelance services.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="faq-icon flex-shrink-0">
+                            <i class="bi bi-question-circle"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">Do you provide ERPNext support in India?</h5>
+                            <p class="text-secondary small mb-0">Yes, I offer dedicated <strong>ERPNext support</strong> and implementation services for manufacturing, retail, and service businesses across India, including Ahmedabad, Mumbai, Delhi, and other major cities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="faq-icon flex-shrink-0">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">Can you build custom apps for Frappe?</h5>
+                            <p class="text-secondary small mb-0">Absolutely. I specialize in developing <strong>Custom Frappe Apps</strong> to extend the functionality of ERPNext or create standalone business applications tailored to your specific workflows.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="faq-icon flex-shrink-0">
+                            <i class="bi bi-database"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">How do you handle data migration to ERPNext?</h5>
+                            <p class="text-secondary small mb-0">I provide comprehensive <strong>data migration services</strong>, ensuring a smooth transition from legacy systems like Tally, Excel, or other ERPs. I handle data cleaning, validation, and mapping to ensure <strong>zero data loss</strong> during the switch to Frappe/ERPNext.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="custom-card p-4 bg-white">
+                    <div class="d-flex gap-4">
+                        <div class="faq-icon flex-shrink-0">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-3">Do you offer post-deployment support?</h5>
+                            <p class="text-secondary small mb-0">Yes, I offer flexible <strong>Annual Maintenance Contracts (AMC)</strong> and on-demand support packages. This includes server monitoring, <strong>security updates</strong>, bug fixes, and minor feature enhancements to keep your business running without interruption.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-label">Case Studies</span>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="row g-4">
+            {% for project in featured_projects %}
+            <div class="col-md-6 col-lg-4">
+                <div class="custom-card bg-white">
+                    <div class="project-img-wrapper">
+                        {% if project.cover_image %}
+                        <img src="{{ project.cover_image.url }}" alt="{{ project.title }}">
+                        {% else %}
+                        <div class="d-flex align-items-center justify-content-center h-100">
+                            <i class="bi bi-kanban" style="font-size: 3rem; color: #8b6ff0;"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="p-4">
+                        <span class="text-uppercase small fw-bold" style="color:#8b6ff0;">{{ project.get_project_type_display }}</span>
+                        <h5 class="fw-bold mt-2 mb-2">{{ project.title }}</h5>
+                        <p class="text-secondary small">{{ project.summary|truncatewords:16 }}</p>
+                        <div class="mb-3">
+                            {% for module in project.modules_list|slice:":3" %}
+                            <span class="module-badge">{{ module }}</span>
+                            {% endfor %}
+                        </div>
+                        <a href="{% url 'project_detail' project.slug %}" class="btn btn-outline-custom btn-sm">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center text-secondary">ERPNext & Frappe projects controlled via MySQL/MariaDB. Other websites managed via Django Admin.</p>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'case_studies' %}" class="btn btn-primary-custom">View All Projects <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+{% if experiences %}
+<section class="section-padding bg-light-custom">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-label">Career Path</span>
+            <h2 class="section-title">Professional Experience</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="timeline">
+                    {% for exp in experiences %}
+                    <div class="timeline-item">
+                        <h5 class="fw-bold mb-1">{{ exp.role }}</h5>
+                        <p class="mb-1 fw-semibold exp-company">{{ exp.company }}{% if exp.location %} &bull; {{ exp.location }}{% endif %}</p>
+                        <p class="small text-secondary mb-2">
+                            {{ exp.start_date|date:"M Y" }} - {% if exp.is_current %}Present{% elif exp.end_date %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                        </p>
+                        <p class="text-secondary mb-0">{{ exp.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- TESTIMONIALS -->
+{% if testimonials %}
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-label">Client Feedback</span>
+            <h2 class="section-title">Testimonials</h2>
+        </div>
+        <div class="row g-4">
+            {% for t in testimonials %}
+            <div class="col-md-6 col-lg-4">
+                <div class="testimonial-card h-100">
+                    <div class="mb-3">
+                        {% for i in "12345" %}
+                        <i class="bi {% if forloop.counter <= t.rating %}bi-star-fill{% else %}bi-star{% endif %}" style="color:#8b6ff0;"></i>
+                        {% endfor %}
+                    </div>
+                    <p class="text-secondary fst-italic">"{{ t.message }}"</p>
+                    <div class="d-flex align-items-center mt-3">
+                        {% if t.photo %}
+                        <img src="{{ t.photo.url }}" class="testimonial-photo me-3" alt="{{ t.client_name }}">
+                        {% else %}
+                        <div class="testimonial-photo me-3 bg-light-custom d-flex align-items-center justify-content-center">
+                            <i class="bi bi-person" style="color:#8b6ff0;"></i>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h6 class="mb-0 fw-bold">{{ t.client_name }}</h6>
+                            <small class="text-secondary">{{ t.client_designation }}{% if t.client_company %}, {{ t.client_company }}{% endif %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="section-padding" style="background: linear-gradient(135deg, #0a0e1a, #1c2560);">
+    <div class="container text-center text-white">
+        <h2 class="fw-bold mb-3">Ready to streamline your business with ERPNext?</h2>
+        <p class="text-white-50 mb-4">Let's discuss how I can help implement, customize, or optimize your ERPNext instance.</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary-custom btn-lg">Get In Touch <i class="bi bi-send ms-1"></i></a>
+    </div>
+</section>
+
+{% endblock %}
