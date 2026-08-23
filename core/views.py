@@ -5,7 +5,7 @@ from django.conf import settings
 
 from .models import (
     Profile, SkillCategory, Certification, Project,
-    WorkExperience, Testimonial
+    WorkExperience, Testimonial, BlogPost
 )
 from .forms import ContactForm
 
@@ -59,25 +59,6 @@ def project_list(request):
     return render(request, 'core/project_list.html', context)
 
 
-def project_detail(request, slug):
-    profile = get_profile()
-    project = get_object_or_404(Project, slug=slug)
-    related_projects = Project.objects.exclude(id=project.id).filter(industry=project.industry)[:3]
-    context = {
-        'profile': profile,
-        'project': project,
-        'related_projects': related_projects,
-    }
-    return render(request, 'core/project_detail.html', context)
-
-
-def certifications_view(request):
-    profile = get_profile()
-    certifications = Certification.objects.all()
-    context = {'profile': profile, 'certifications': certifications}
-    return render(request, 'core/certifications.html', context)
-
-
 def case_studies(request):
     profile = get_profile()
     context = {'profile': profile}
@@ -114,3 +95,10 @@ def contact(request):
 
     context = {'profile': profile, 'form': form}
     return render(request, 'core/contact.html', context)
+
+
+def blog(request):
+    profile = get_profile()
+    blog_posts = BlogPost.objects.filter(published=True).order_by('-created_at') if BlogPost.objects.exists() else []
+    context = {'profile': profile, 'blog_posts': blog_posts}
+    return render(request, 'core/blog.html', context)

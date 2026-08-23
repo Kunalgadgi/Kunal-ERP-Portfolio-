@@ -1,4 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Dark/Light mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    }
+
+    function updateThemeIcon(theme) {
+        if (themeIcon) {
+            themeIcon.className = theme === 'light' ? 'bi bi-moon' : 'bi bi-sun';
+        }
+    }
+
     // Smooth scroll for in-page anchors
     document.querySelectorAll('a[href*="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {

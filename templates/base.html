@@ -36,10 +36,15 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                     <li class="nav-item"><a class="nav-link {% if '/projects' in request.path %}active-link{% endif %}" href="{% url 'project_list' %}">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link {% if '/case-studies' in request.path %}active-link{% endif %}" href="{% url 'case_studies' %}">Case Studies</a></li>
-                    {% comment %} <li class="nav-item"><a class="nav-link {% if '/certifications' in request.path %}active-link{% endif %}" href="{% url 'certifications' %}">Certifications</a></li> {% endcomment %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
-            <a class="btn btn-lets-talk d-none d-lg-inline-flex align-items-center" href="{% url 'contact' %}">Let's Talk <i class="bi bi-arrow-right ms-2"></i></a>
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-theme-toggle d-none d-lg-inline-flex align-items-center" id="themeToggle">
+                    <i class="bi bi-moon" id="themeIcon"></i>
+                </button>
+                <a class="btn btn-lets-talk d-none d-lg-inline-flex align-items-center" href="{% url 'contact' %}">Let's Talk <i class="bi bi-arrow-right ms-2"></i></a>
+            </div>
         </div>
     </div>
 </nav>
@@ -86,16 +91,17 @@
                     <li><a href="{% url 'about' %}"><span class="footer-bullet"></span> About</a></li>
                     <li><a href="{% url 'project_list' %}"><span class="footer-bullet"></span> Portfolio</a></li>
                     <li><a href="{% url 'case_studies' %}"><span class="footer-bullet"></span> Case Studies</a></li>
+                    <li><a href="{% url 'blog' %}"><span class="footer-bullet"></span> Blog</a></li>
                     <li><a href="{% url 'contact' %}"><span class="footer-bullet"></span> Contact</a></li>
                 </ul>
             </div>
             <div class="col-md-4 col-lg-2">
                 <h6 class="fw-bold text-uppercase mb-4" style="letter-spacing: 1px;">Services</h6>
                 <ul class="list-unstyled footer-nav-links">
-                    <li><span class="footer-bullet"></span> ERPNext Development</li>
-                    <li><span class="footer-bullet"></span> Freelance Consulting</li>
-                    <li><span class="footer-bullet"></span> Custom Web Portals</li>
-                    <li><span class="footer-bullet"></span> IT Consulting</li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in ERPNext Development services" target="_blank"><span class="footer-bullet"></span> ERPNext Development</a></li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in Freelance Consulting services" target="_blank"><span class="footer-bullet"></span> Freelance Consulting</a></li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in Custom Web Portals services" target="_blank"><span class="footer-bullet"></span> Custom Web Portals</a></li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in IT Consulting services" target="_blank"><span class="footer-bullet"></span> IT Consulting</a></li>
                 </ul>
             </div>
             <div class="col-md-4 col-lg-3">

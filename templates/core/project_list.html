@@ -7,12 +7,6 @@
             <h1 class="fw-bold mb-4"> Featured <span class="premium-gradient-text">Projects</span></h1>
             <p class="text-secondary mb-4"> A selection of my work in Web Development, Mobile Apps, and ERP Customization. </p>
         </div>
-        {% comment %} <div class="d-flex flex-wrap gap-3 justify-content-center mb-5" id="filterBar">
-            <button class="btn btn-sm filter-btn active" data-filter="all">All</button>
-            <button class="btn btn-sm filter-btn" data-filter="frappe">Frappe/ERPNext</button>
-            <button class="btn btn-sm filter-btn" data-filter="wordpress">WordPress</button>
-            <button class="btn btn-sm filter-btn" data-filter="react_native">React Native</button>
-        </div> {% endcomment %}
         <div class="row g-4" id="portfolioGrid">
             <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
                 <div class="portfolio-card">
@@ -115,7 +109,7 @@
             <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/Portfolio (4).png' %}" alt="FCRM">
+                        <img src="{% static 'images/fcrm.jpg' %}" alt="FCRM">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
@@ -126,94 +120,21 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-wrapper">
+                        <img src="{% static 'images/hrms.jpg' %}" alt="HRMS">
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <span class="project-badge">Frappe/ERPNext</span>
+                        </div>
+                        <h5 class="fw-bold mb-3">HRMS</h5>
+                        <p class="text-secondary small mb-0">Human Resource Management System for employee management, payroll, attendance, leave, and HR operations.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-{% endblock %}
-
-{% block extra_css %}
-<style>
-.filter-btn {
-    border: 2px solid var(--border-subtle);
-    color: var(--text-muted);
-    font-weight: 600;
-    border-radius: 30px;
-    padding: 8px 22px;
-    background: var(--bg-card);
-    transition: all .2s ease;
-}
-.filter-btn:hover { border-color: var(--primary-light); color: #fff; }
-.filter-btn.active { 
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    border-color: transparent;
-    color: #fff;
-}
-
-.portfolio-card {
-    border-radius: 18px;
-    overflow: hidden;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all .3s ease;
-    height: 100%;
-}
-.portfolio-card:hover {
-    box-shadow: 0 12px 30px rgba(79,110,247,0.15);
-    border-color: rgba(79,110,247,0.4);
-}
-.portfolio-img-wrapper {
-    position: relative;
-    height: 230px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #1c2540, #262f52);
-}
-.portfolio-img-wrapper img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform .3s ease;
-}
-.portfolio-card:hover .portfolio-img-wrapper img { transform: scale(1.05); }
-.portfolio-overlay {
-    position: absolute; inset: 0;
-    background: rgba(10,14,26,0.65);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity .3s ease;
-}
-.portfolio-card:hover .portfolio-overlay { opacity: 1; }
-.portfolio-item.hidden-item { display: none; }
-.project-badge {
-    background: rgba(79,110,247,0.12);
-    color: #a9b8ff;
-    font-weight: 600;
-    font-size: 0.7rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px solid rgba(79,110,247,0.3);
-}
-</style>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('.portfolio-item');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            buttons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            const filter = this.getAttribute('data-filter');
-            items.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.classList.remove('hidden-item');
-                } else {
-                    item.classList.add('hidden-item');
-                }
-            });
-        });
-    });
-});
-</script>
 {% endblock %}

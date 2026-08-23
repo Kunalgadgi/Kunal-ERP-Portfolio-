@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <span class="section-label">Blog</span>
+                <h1 class="section-title mb-3">ERPNext Implementation Insights</h1>
+                <p class="section-subtext">Practical guides and real-world experiences from ERPNext implementations</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Timeline -->
+<section class="py-5">
+    <div class="container">
+        <div class="blog-timeline">
+            <!-- Card 01 - Left -->
+            <div class="blog-timeline-item blog-timeline-left">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">01</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">ERPNext Implementation Journey</h4>
+                            <p class="blog-card-subtitle">From Requirement Gathering to Go-Live</p>
+                            <p class="blog-card-text">Successful implementation requires: <strong>Requirement Gathering → Documentation → Discussion → Gap Analysis → Solution Discussion → Module-wise Implementation → Testing → Phased Go-Live → Post-Go-Live Support</strong>. Key: Business understanding, communication, and continuous collaboration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 02 - Right -->
+            <div class="blog-timeline-item blog-timeline-right">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">02</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Techno-Functional Consultant Role</h4>
+                            <p class="blog-card-subtitle">Bridge between business and technical ERP solutions</p>
+                            <p class="blog-card-text">Core responsibilities: Business analysis, ERPNext functional mapping, server/environment setup, configuration, customization (fields, DocTypes, reports), integrations, testing, troubleshooting, and user training. <strong>Approach: Understand business first, then find simplest ERPNext solution.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 03 - Left -->
+            <div class="blog-timeline-item blog-timeline-left">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">03</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Configuration vs Customization</h4>
+                            <p class="blog-card-subtitle">When should you customize?</p>
+                            <p class="blog-card-text"><strong>Principle: Use standard ERPNext flow first.</strong> Configuration (roles, workflows, approvals, settings) whenever possible. Customization (DocTypes, fields, scripts, reports) only when standard flow cannot fulfill requirement. Goal: Right solution with minimum unnecessary customization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 04 - Right -->
+            <div class="blog-timeline-item blog-timeline-right">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">04</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Sales, Purchase & Stock Workflow</h4>
+                            <p class="blog-card-subtitle">Connected operational areas</p>
+                            <p class="blog-card-text"><strong>Sales:</strong> Lead → Quotation → Sales Order → Delivery → Invoice → Payment. <strong>Purchase:</strong> Material Request → Supplier Quotation → PO → Receipt → Invoice → Payment. <strong>Stock:</strong> Request → Receipt → Stock → Transfer/Issue → Delivery/Consumption. Map client's actual operational process to ERPNext workflow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 05 - Left -->
+            <div class="blog-timeline-item blog-timeline-left">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">05</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Manufacturing Implementation</h4>
+                            <p class="blog-card-subtitle">From BOM to Production</p>
+                            <p class="blog-card-text"><strong>Flow:</strong> Material Requirement → BOM → Production Plan → Work Order → Job Card → Stock Entry → Manufacturing → Finished Goods. Key areas: Process discussion, BOM, production planning, work orders, job cards, stock entries, subcontracting. Every manufacturing business has different processes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 06 - Right -->
+            <div class="blog-timeline-item blog-timeline-right">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">06</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Accounting & Finance Setup</h4>
+                            <p class="blog-card-subtitle">Critical implementation area</p>
+                            <p class="blog-card-text"><strong>Setup:</strong> Company, Chart of Accounts, Cost Centers, Fiscal Year, Taxes, Payment Modes, Bank Accounts. <strong>Flow:</strong> Invoice → Accounting Entry → Payment → Outstanding. <strong>Reports:</strong> P&L, Balance Sheet, GL, Trial Balance, AR/AP. Objective: Map client's actual accounting process to ERPNext structure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 07 - Left -->
+            <div class="blog-timeline-item blog-timeline-left">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">07</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Mapping Client Requirements</h4>
+                            <p class="blog-card-subtitle">Requirement to ERPNext solution</p>
+                            <p class="blog-card-text"><strong>Approach:</strong> Requirement → Discussion → Feasibility Check → Standard Flow → Configuration → Customization (if required). Steps: Understand requirement, analyze existing process, check feasibility, prefer standard flow, find alternatives, customize only when necessary. Good implementation = practical, scalable, maintainable solution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 08 - Right -->
+            <div class="blog-timeline-item blog-timeline-right">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">08</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Custom DocTypes & Fields</h4>
+                            <p class="blog-card-subtitle">When standard fields aren't enough</p>
+                            <p class="blog-card-text"><strong>Custom Fields:</strong> Additional info in existing DocType. <strong>Custom DocTypes:</strong> Completely different business objects. <strong>Approach:</strong> Understand requirement → Check existing DocType/fields → Evaluate if Custom Field sufficient → Create Custom DocType only when necessary → Configure permissions/workflow → Test → Validate. Avoid unnecessary customization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 09 - Left -->
+            <div class="blog-timeline-item blog-timeline-left">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">09</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Workflow & Multi-Level Approval</h4>
+                            <p class="blog-card-subtitle">Structured approval hierarchy</p>
+                            <p class="blog-card-text"><strong>Flow:</strong> User Creates → Submit → Manager Approval → Senior Manager → Final Authority → Approved (or Reject → Correction → Resubmit). <strong>Implementation:</strong> Understand hierarchy, identify users/roles, define states/transitions, configure actions/permissions, test, validate. Benefit: Control, accountability, visibility over transactions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 10 - Right -->
+            <div class="blog-timeline-item blog-timeline-right">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">10</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Data Migration</h4>
+                            <p class="blog-card-subtitle">From Excel to ERPNext</p>
+                            <p class="blog-card-text"><strong>Sources:</strong> Excel, CSV, Existing ERP, Legacy apps. <strong>Process:</strong> Existing Data → Data Cleaning → Field Mapping → Import → Validation. <strong>Steps:</strong> Collect data, clean duplicates, identify DocType, map columns, identify mandatory fields, import, validate, client verification. Critical: Data quality, correct mapping, consistency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 11 - Left -->
+            <div class="blog-timeline-item blog-timeline-left">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">11</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">User Training, UAT & Go-Live</h4>
+                            <p class="blog-card-subtitle">User adoption is key</p>
+                            <p class="blog-card-text"><strong>Training:</strong> Based on actual business process (Sales, Purchase, Stock, Accounts, Manufacturing). <strong>Approach:</strong> Explain → Demonstrate → User Performs → Questions → Correction → Repeat. <strong>UAT:</strong> Real business scenarios in ERPNext. <strong>Go-Live Support:</strong> Process questions, permissions, workflows, data issues, system usage. Users should understand WHY process works that way.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 12 - Right -->
+            <div class="blog-timeline-item blog-timeline-right">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">12</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Custom Reports & Script Reports</h4>
+                            <p class="blog-card-subtitle">Beyond standard reporting</p>
+                            <p class="blog-card-text"><strong>Standard Reports:</strong> Available for common processes. <strong>Custom Reports:</strong> Specific format/fields/filters. <strong>Script Reports:</strong> Advanced logic, data from multiple DocTypes using queries. <strong>Development:</strong> Requirement → Information → DocTypes → Fields → Query/Logic → Report → Testing. Objective: Right information for better decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 13 - Left -->
+            <div class="blog-timeline-item blog-timeline-left">
+                <div class="blog-timeline-content">
+                    <div class="blog-card">
+                        <div class="blog-card-header">
+                            <span class="blog-card-number">13</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <h4 class="blog-card-title">Real-World Implementation Lessons</h4>
+                            <p class="blog-card-subtitle">Continuous learning journey</p>
+                            <p class="blog-card-text">Every client is different (workflows, approvals, production, reporting, accounting). <strong>Requirement gathering is foundation.</strong> <strong>Solution approach:</strong> Standard flow → Configuration → Alternative → Customization. <strong>Manufacturing</strong> requires deeper process understanding. <strong>Every challenge = New Learning.</strong> Client satisfaction (reduced manual work, better control, improved reporting) builds confidence. <strong>Continuous learning:</strong> Every implementation = new process understood, problem solved, experience gained.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
