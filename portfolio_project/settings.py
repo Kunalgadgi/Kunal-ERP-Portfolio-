@@ -33,6 +33,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "*.vercel.app",
 ]
 
 # Application definition
@@ -146,7 +147,7 @@ EMAIL_BACKEND = os.environ.get(
     'DJANGO_EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend'
 )
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587') or '587')
+EMAIL_PORT = 587
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
