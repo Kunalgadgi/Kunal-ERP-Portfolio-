@@ -24,8 +24,8 @@
     <div class="container">
         <div class="navbar-pill-wrap d-flex align-items-center justify-content-between w-100">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <span class="brand-logo">{{ profile.full_name|default:"SB"|slice:":1" }}</span>
-                {% if profile %}{{ profile.full_name }}{% else %}ERP Consultant{% endif %}
+                <span class="brand-logo">{{ profile.full_name|default:"KG"|slice:":1" }}</span>
+                {% if profile %}{{ profile.full_name }}{% else %}Kunal Gadgi{% endif %}
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
