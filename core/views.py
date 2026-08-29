@@ -59,12 +59,6 @@ def project_list(request):
     return render(request, 'core/project_list.html', context)
 
 
-def case_studies(request):
-    profile = get_profile()
-    context = {'profile': profile}
-    return render(request, 'core/case_studies.html', context)
-
-
 def contact(request):
     profile = get_profile()
     if request.method == 'POST':

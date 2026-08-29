@@ -35,7 +35,6 @@
                     <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active-link{% endif %}" href="{% url 'home' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                     <li class="nav-item"><a class="nav-link {% if '/projects' in request.path %}active-link{% endif %}" href="{% url 'project_list' %}">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link {% if '/case-studies' in request.path %}active-link{% endif %}" href="{% url 'case_studies' %}">Case Studies</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
