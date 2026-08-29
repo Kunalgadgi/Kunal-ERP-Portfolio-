@@ -35,6 +35,7 @@
                     <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active-link{% endif %}" href="{% url 'home' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                     <li class="nav-item"><a class="nav-link {% if '/projects' in request.path %}active-link{% endif %}" href="{% url 'project_list' %}">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link {% if '/case-studies' in request.path %}active-link{% endif %}" href="{% url 'case_studies' %}">Case Studies</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
@@ -89,6 +90,7 @@
                     <li><a href="{% url 'home' %}"><span class="footer-bullet"></span> Home</a></li>
                     <li><a href="{% url 'about' %}"><span class="footer-bullet"></span> About</a></li>
                     <li><a href="{% url 'project_list' %}"><span class="footer-bullet"></span> Portfolio</a></li>
+                    <li><a href="{% url 'case_studies' %}"><span class="footer-bullet"></span> Case Studies</a></li>
                     <li><a href="{% url 'blog' %}"><span class="footer-bullet"></span> Blog</a></li>
                     <li><a href="{% url 'contact' %}"><span class="footer-bullet"></span> Contact</a></li>
                 </ul>
