@@ -1,0 +1,11 @@
+[project]
+name = "erpnext-consultant-portfolio"
+version = "1.0.0"
+requires-python = ">=3.8"
+
+[tool.vercel]
+buildCommand = "python manage.py collectstatic --noinput"
+outputDirectory = "static"
+
+[tool.vercel.env]
+DJANGO_SETTINGS_MODULE = "portfolio_project.settings"

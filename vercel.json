@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "manage.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.12"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "portfolio_project.settings",
+    "DJANGO_SECRET_KEY": "@django_secret_key",
+    "DJANGO_DEBUG": "False",
+    "DJANGO_ALLOWED_HOSTS": "kunal-erp-portfolio.vercel.app,*.vercel.app"
+  }
+}
