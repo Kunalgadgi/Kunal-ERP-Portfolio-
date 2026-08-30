@@ -70,23 +70,28 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            contact_message = form.save()
+            # Get form data without saving to database
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
 
-            # Try to send an email notification if email backend is configured.
+            # Send email notification
             try:
                 send_mail(
-                    subject=f"New Portfolio Contact: {contact_message.subject}",
+                    subject=f"New Portfolio Contact: {subject}",
                     message=(
-                        f"Name: {contact_message.name}\n"
-                        f"Email: {contact_message.email}\n\n"
-                        f"{contact_message.message}"
+                        f"Name: {name}\n"
+                        f"Email: {email}\n\n"
+                        f"{message}"
                     ),
-                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    from_email=settings.DEFAULT_FROM_EMAIL or email,
                     recipient_list=[settings.CONTACT_RECEIVER_EMAIL],
-                    fail_silently=True,
+                    fail_silently=False,
                 )
-            except Exception:
-                pass
+            except Exception as e:
+                messages.error(request, f"Failed to send message: {str(e)}")
+                return redirect('contact')
 
             messages.success(request, "Thanks for reaching out! I'll get back to you soon.")
             return redirect('contact')
