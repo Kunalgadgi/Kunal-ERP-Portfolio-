@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "portfolio_project/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/portfolio_project/wsgi.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "portfolio_project.settings",
+    "DJANGO_SECRET_KEY": "k3q0w*a0hgx2a^du-z&lg9i_2s3=nnqxe7$2=(ggw6qzwil)",
+    "DJANGO_DEBUG": "False"
+  }
+}
