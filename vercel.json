@@ -17,6 +17,6 @@
   "env": {
     "DJANGO_SETTINGS_MODULE": "portfolio_project.settings",
     "DJANGO_SECRET_KEY": "@django_secret_key",
-    "DJANGO_DEBUG": "False"
+    "DJANGO_DEBUG": "True"
   }
 }
