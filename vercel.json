@@ -16,8 +16,7 @@
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "portfolio_project.settings",
-    "DJANGO_SECRET_KEY": "k3q0w*a0hgx2a^du-z&lg9i_2s3=nnqxe7$2=(ggw6qzwil)",
-    "DJANGO_DEBUG": "False",
-    "DATABASE_URL": "@database_url"
+    "DJANGO_SECRET_KEY": "@django_secret_key",
+    "DJANGO_DEBUG": "False"
   }
 }
