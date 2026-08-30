@@ -23,10 +23,6 @@
   "env": {
     "DJANGO_SETTINGS_MODULE": "portfolio_project.settings",
     "DJANGO_SECRET_KEY": "k3q0w*a0hgx2a^du-z&lg9i_2s3=nnqxe7$2=(ggw6qzwil)",
-    "DJANGO_DEBUG": "False",
-    "EMAIL_HOST_USER": "@email_host_user",
-    "EMAIL_HOST_PASSWORD": "@email_host_password",
-    "DEFAULT_FROM_EMAIL": "@default_from_email",
-    "CONTACT_RECEIVER_EMAIL": "@contact_receiver_email"
+    "DJANGO_DEBUG": "False"
   }
 }
