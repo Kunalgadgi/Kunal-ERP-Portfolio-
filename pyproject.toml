@@ -1,0 +1,7 @@
+[project]
+name = "portfolio"
+requires-python = ">=3.12"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
