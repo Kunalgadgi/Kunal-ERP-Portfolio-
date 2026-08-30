@@ -35,9 +35,20 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "*.vercel.app",
-    "erpportfolio.vercel.app",
 ]
+
+# Add Vercel domains dynamically
+import re
+def get_vercel_hosts():
+    hosts = [
+        "127.0.0.1",
+        "localhost",
+    ]
+    # Add all .vercel.app domains
+    hosts.append("*.vercel.app")
+    return hosts
+
+ALLOWED_HOSTS = get_vercel_hosts()
 
 # Application definition
 
