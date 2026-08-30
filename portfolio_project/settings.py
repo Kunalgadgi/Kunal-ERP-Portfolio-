@@ -32,23 +32,7 @@ DEBUG = False
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-]
-
-# Add Vercel domains dynamically
-import re
-def get_vercel_hosts():
-    hosts = [
-        "127.0.0.1",
-        "localhost",
-    ]
-    # Add all .vercel.app domains
-    hosts.append("*.vercel.app")
-    return hosts
-
-ALLOWED_HOSTS = get_vercel_hosts()
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -96,13 +80,21 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 # Database
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+try:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+except:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
