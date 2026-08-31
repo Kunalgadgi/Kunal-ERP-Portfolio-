@@ -1363,3 +1363,14 @@ body {
     .section-title { font-size: 1.8rem; }
     .contact-hero .title-highlight { font-size: 1.9rem; }
 }
+
+/* Contact form input text color */
+input[type="text"],
+input[type="email"],
+textarea {
+    color: black !important;
+}
+input::placeholder,
+textarea::placeholder {
+    color: #888 !important;
+}
