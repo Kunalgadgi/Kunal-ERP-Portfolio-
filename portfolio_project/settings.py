@@ -21,10 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY',
-    'k3q0w*a0hgx2a^du-z&lg9i_2s3=nnqxe7$2=(ggw6qzwil)'
-)
+SECRET_KEY = 'k3q0w*a0hgx2a^du-z&lg9i_2s3=nnqxe7$2=(ggw6qzwil)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -78,23 +75,12 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
 
 # Database
-import dj_database_url
-
-try:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-except:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 
 # Password validation
@@ -150,9 +136,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'qhfs jmum ahri adal')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
-CONTACT_RECEIVER_EMAIL = os.environ.get('CONTACT_RECEIVER_EMAIL', EMAIL_HOST_USER)
+EMAIL_HOST_USER = 'qhfs jmum ahri adal'
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'qhfs jmum ahri adal'
+CONTACT_RECEIVER_EMAIL = 'qhfs jmum ahri adal'
 
 LOGIN_REDIRECT_URL = '/'
