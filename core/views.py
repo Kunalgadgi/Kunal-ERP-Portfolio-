@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import HttpResponse
 
 from .models import (
     Profile, SkillCategory, Certification, Project,
@@ -48,15 +49,33 @@ def about(request):
 
 
 def project_list(request):
-    profile = get_profile()
-    projects = Project.objects.all()
+    import traceback
+    try:
+        context = {
+            'profile': None,
+            'projects': [],
+            'project_types': [],
+        }
+        return render(request, 'core/project_list.html', context)
+    except Exception as e:
+        print(f"Error in project_list: {e}")
+        traceback.print_exc()
+        return HttpResponse(f"Error: {str(e)}")
 
-    context = {
-        'profile': profile,
-        'projects': projects,
-        'project_types': Project.PROJECT_TYPE_CHOICES,
-    }
-    return render(request, 'core/project_list.html', context)
+
+def portfolio(request):
+    import traceback
+    try:
+        context = {
+            'profile': None,
+            'projects': [],
+            'project_types': [],
+        }
+        return render(request, 'core/project_list.html', context)
+    except Exception as e:
+        print(f"Error in portfolio: {e}")
+        traceback.print_exc()
+        return HttpResponse(f"Error: {str(e)}")
 
 
 def case_studies(request):
