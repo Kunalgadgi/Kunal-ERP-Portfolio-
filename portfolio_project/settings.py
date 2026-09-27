@@ -263,7 +263,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Disable email error logging for production
 ADMINS = []
-MANAGERS = []
+MANAGERS = []  # Fixed for Vercel deployment
 
 
 
