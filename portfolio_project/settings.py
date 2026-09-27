@@ -261,6 +261,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Disable email error logging for production
+ADMINS = []
+MANAGERS = []
+
 
 
 # Email configuration for the contact form.
@@ -270,10 +274,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # For production, set env vars to use SMTP (e.g. Gmail, SendGrid, etc.)
 
 EMAIL_BACKEND = os.environ.get(
-
-    'DJANGO_EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend'
-
-)
+    'DJANGO_EMAIL_BACKEND',
+) or 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 
