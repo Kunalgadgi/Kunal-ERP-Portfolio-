@@ -1,26 +1,74 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-
+<style>
+    .feature-mini-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+    .feature-mini-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(139, 111, 240, 0.1), transparent);
+        transition: left 0.5s;
+    }
+    .feature-mini-card:hover::before {
+        left: 100%;
+    }
+    .feature-mini-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(139, 111, 240, 0.3);
+    }
+    .custom-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .custom-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(139, 111, 240, 0.3);
+    }
+    .partner-icon, .faq-icon {
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(139, 111, 240, 0.4); }
+        50% { box-shadow: 0 0 0 10px rgba(139, 111, 240, 0); }
+    }
+    .cursor-glow {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        transition: opacity 0.3s ease;
+    }
+</style>
 <!-- HERO -->
-<section class="hero-section" id="home">
-    <div class="container position-relative">
+<section class="hero-section position-relative overflow-hidden" id="home">
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="container position-relative z-10">
         <span class="badge-pill mb-4 d-inline-block">
-            <span class="dot"></span>Open for Frappe & ERPNext Projects
+            <span class="dot"></span>Open for Freelance Projects
         </span>
         <h1 class="mb-4">
             {% if profile %}{{ profile.full_name }}{% else %}Kunal Gadgi{% endif %} &ndash;<br>
-            <span class="gradient-text">{% if profile %}{{ profile.title }}{% else %}ERPNext Techno-Functional / Implementation{% endif %}</span>
+            <span class="gradient-text">{% if profile %}{{ profile.title }}{% else %}Full Stack Developer & AI Specialist{% endif %}</span>
         </h1>
         <p class="lead-text">
-            {% if profile %}{{ profile.tagline }}{% else %}ERPNext Techno-Functional / Implementation Specialist. I craft high-performance ERP setups and business solutions.{% endif %}
+            {% if profile %}{{ profile.tagline }}{% else %}Freelance Developer specializing in Python and Django. Building custom solutions for businesses worldwide.{% endif %}
         </p>
         <div class="d-flex flex-wrap gap-3 justify-content-center mb-4">
-            <a href="{% url 'contact' %}" class="btn-white-pill">Start a Project</a>
+            <a href="{% url 'contact' %}" class="btn-white-pill">Hire Me</a>
             <a href="{% url 'project_list' %}" class="btn-dark-pill">View My Work</a>
         </div>
-        <p class="text-secondary small">ERPNext Functional Consultant &amp; Implementation Freelancer</p>
+        <p class="text-secondary small">Python • Django • AI/ML • Shopify • PHP • HTML/CSS/JS</p>
 
         {% if profile.profile_photo %}
         <div class="hero-photo-frame mt-5">
@@ -57,13 +105,13 @@
 {% endif %}
 
 <!-- ABOUT SNAPSHOT -->
-<section class="section-padding">
+<section class="section-padding" style="background-color: #f8f9fa;">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <span class="section-label">Who I Am</span>
                 <h2 class="section-title mb-4">About Me</h2>
-                <p class="text-secondary">{% if profile %}{{ profile.about|truncatewords:60 }}{% else %}Experienced ERPNext functional consultant specializing in end-to-end implementations across Accounts, Stock, Selling, Buying, HR, and Manufacturing modules.{% endif %}</p>
+                <p class="text-secondary">{% if profile %}{{ profile.about|truncatewords:60 }}{% else %}Freelance Full Stack Developer with expertise in Python, Django, AI/ML, Shopify, and modern web technologies. I build custom solutions for businesses worldwide, from e-commerce stores to AI-powered applications.{% endif %}</p>
                 <a href="{% url 'about' %}" class="btn btn-outline-custom mt-2">
                     Read Full Bio <i class="bi bi-arrow-right ms-1"></i>
                 </a>
@@ -72,30 +120,30 @@
                 <div class="row g-3">
                     <div class="col-6">
                         <div class="feature-mini-card">
-                            <i class="bi bi-diagram-3 fs-2 text-success-emphasis" style="color:#8b6ff0;"></i>
-                            <h6 class="fw-bold mt-3">Process Mapping</h6>
-                            <p class="small text-secondary mb-0">Translating business needs into ERPNext workflows.</p>
+                            <i class="bi bi-code-slash fs-2 text-success-emphasis" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">Web Development</h6>
+                            <p class="small text-secondary mb-0">Custom websites and web applications using Django, Flask, and modern frameworks.</p>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="feature-mini-card">
-                            <i class="bi bi-gear-wide-connected fs-2" style="color:#8b6ff0;"></i>
-                            <h6 class="fw-bold mt-3">Configuration</h6>
-                            <p class="small text-secondary mb-0">Custom fields, workflows, print formats & reports.</p>
+                            <i class="bi bi-shop fs-2" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">Shopify</h6>
+                            <p class="small text-secondary mb-0">E-commerce stores, theme customization, and app development on Shopify.</p>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="feature-mini-card">
-                            <i class="bi bi-mortarboard fs-2" style="color:#8b6ff0;"></i>
-                            <h6 class="fw-bold mt-3">User Training</h6>
-                            <p class="small text-secondary mb-0">Onboarding teams for smooth adoption.</p>
+                            <i class="bi bi-cpu fs-2" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">AI & Machine Learning</h6>
+                            <p class="small text-secondary mb-0">Intelligent solutions using Python, TensorFlow, and modern ML frameworks.</p>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="feature-mini-card">
-                            <i class="bi bi-life-preserver fs-2" style="color:#8b6ff0;"></i>
-                            <h6 class="fw-bold mt-3">Post Go-Live Support</h6>
-                            <p class="small text-secondary mb-0">Ongoing optimization & troubleshooting.</p>
+                            <i class="bi bi-database fs-2" style="color:#8b6ff0;"></i>
+                            <h6 class="fw-bold mt-3">Backend Development</h6>
+                            <p class="small text-secondary mb-0">Robust APIs, database design, and server-side logic with Python and PHP.</p>
                         </div>
                     </div>
                 </div>
@@ -105,15 +153,14 @@
 </section>
 
 <!-- SKILLS -->
-<section class="section-padding bg-light-custom" id="skills">
+<section class="section-padding" id="skills" style="background-color: #f8f9fa;">
     <div class="container">
         <div class="text-center mb-5">
             <span class="section-label">What I Work With</span>
-            <h2 class="section-title">ERPNext Modules & Skills</h2>
+            <h2 class="section-title">My Tech Stack</h2>
         </div>
         <div class="text-center mt-5">
-            {% comment %} <p class="text-center text-secondary">Skills will appear here once added via Django Admin.</p> {% endcomment %}
-            <a href="{% url 'project_list' %}" class="btn btn-primary-custom">View All Modules <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="{% url 'project_list' %}" class="btn btn-primary-custom">View All Projects <i class="bi bi-arrow-right ms-1"></i></a>
         </div>
         <div class="row g-4">
             {% for category in skill_categories %}
@@ -139,12 +186,12 @@
     </div>
 </section>
 
-<!-- WHY PARTNER WITH ME -->
-<section class="section-padding">
+<!-- WHY HIRE ME -->
+<section class="section-padding" style="background-color: #f8f9fa;">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title">Why <span class="premium-gradient-text">Partner With Me?</span></h2>
-            <p class="text-secondary">I bring a unique blend of technical expertise in <strong>Frappe/ERPNext</strong> and modern development to deliver solutions that drive business growth in India and beyond.</p>
+            <h2 class="section-title">Why <span class="premium-gradient-text">Hire Me?</span></h2>
+            <p class="text-secondary">I bring a unique blend of technical expertise in <strong>Web Development, AI, and E-commerce</strong> to deliver custom solutions that drive business growth.</p>
         </div>
         <div class="row g-4 justify-content-center">
             <div class="col-md-6">
@@ -204,7 +251,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="section-padding">
+<section class="section-padding" style="background-color: #f8f9fa;">
     <div class="container">
         <div class="text-center mb-5">
             <span class="section-label">Common Queries</span>
@@ -219,8 +266,8 @@
                             <i class="bi bi-question-circle"></i>
                         </div>
                         <div>
-                            <h5 class="fw-bold mb-3">Do you provide ERPNext support in India?</h5>
-                            <p class="text-secondary small mb-0">Yes, I offer dedicated <strong>ERPNext support</strong> and implementation services for manufacturing, retail, and service businesses across India, including Ahmedabad, Mumbai, Delhi, and other major cities.</p>
+                            <h5 class="fw-bold mb-3">Do you provide freelance development services?</h5>
+                            <p class="text-secondary small mb-0">Yes, I offer dedicated <strong>freelance development services</strong> for businesses worldwide. I work with Python, Django, Shopify, PHP, and modern web technologies to build custom solutions.</p>
                         </div>
                     </div>
                 </div>
@@ -232,8 +279,8 @@
                             <i class="bi bi-code-slash"></i>
                         </div>
                         <div>
-                            <h5 class="fw-bold mb-3">Can you build custom apps for Frappe?</h5>
-                            <p class="text-secondary small mb-0">Absolutely. I specialize in developing <strong>Custom Frappe Apps</strong> to extend the functionality of ERPNext or create standalone business applications tailored to your specific workflows.</p>
+                            <h5 class="fw-bold mb-3">Can you build custom web applications?</h5>
+                            <p class="text-secondary small mb-0">Absolutely. I specialize in developing <strong>Custom Web Applications</strong> using Django, Flask, React, and modern frameworks. From e-commerce platforms to SaaS applications, I build tailored solutions for your business needs.</p>
                         </div>
                     </div>
                 </div>
@@ -245,8 +292,8 @@
                             <i class="bi bi-database"></i>
                         </div>
                         <div>
-                            <h5 class="fw-bold mb-3">How do you handle data migration to ERPNext?</h5>
-                            <p class="text-secondary small mb-0">I provide comprehensive <strong>data migration services</strong>, ensuring a smooth transition from legacy systems like Tally, Excel, or other ERPs. I handle data cleaning, validation, and mapping to ensure <strong>zero data loss</strong> during the switch to Frappe/ERPNext.</p>
+                            <h5 class="fw-bold mb-3">Do you work with Shopify?</h5>
+                            <p class="text-secondary small mb-0">Yes, I provide comprehensive <strong>Shopify development services</strong> including store setup, theme customization, app development, and integration with third-party services. I help businesses launch and scale their e-commerce presence.</p>
                         </div>
                     </div>
                 </div>
@@ -380,10 +427,27 @@
 <!-- CTA -->
 <section class="section-padding" style="background: linear-gradient(135deg, #0a0e1a, #1c2560);">
     <div class="container text-center text-white">
-        <h2 class="fw-bold mb-3">Ready to streamline your business with ERPNext?</h2>
-        <p class="text-white-50 mb-4">Let's discuss how I can help implement, customize, or optimize your ERPNext instance.</p>
+        <h2 class="fw-bold mb-3">Ready to start your project?</h2>
+        <p class="text-white-50 mb-4">Let's discuss how I can help build your custom web application, Shopify store, or AI solution.</p>
         <a href="{% url 'contact' %}" class="btn btn-primary-custom btn-lg">Get In Touch <i class="bi bi-send ms-1"></i></a>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cursorGlow = document.getElementById('cursorGlow');
+        const heroSection = document.getElementById('home');
+        
+        heroSection.addEventListener('mousemove', function(e) {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+            cursorGlow.style.opacity = '1';
+        });
+        
+        heroSection.addEventListener('mouseleave', function() {
+            cursorGlow.style.opacity = '0';
+        });
+    });
+</script>
 
 {% endblock %}

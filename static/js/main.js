@@ -44,14 +44,44 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Navbar shadow on scroll
+    // Navbar auto-hide on scroll
     const navbar = document.querySelector('.custom-navbar');
+    let lastScrollTop = 0;
+    let scrollTimeout;
+
     window.addEventListener('scroll', function () {
-        if (window.scrollY > 30) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Clear previous timeout
+        clearTimeout(scrollTimeout);
+        
+        // Hide navbar when scrolling down, show when scrolling up
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            navbar.classList.add('nav-hidden');
+            navbar.classList.remove('nav-visible');
+        } else {
+            // Scrolling up or at top
+            navbar.classList.remove('nav-hidden');
+            navbar.classList.add('nav-visible');
+        }
+        
+        // Add shadow when scrolled
+        if (scrollTop > 30) {
             navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.25)';
         } else {
             navbar.style.boxShadow = 'none';
         }
+        
+        lastScrollTop = scrollTop;
+        
+        // Reset to visible after scrolling stops
+        scrollTimeout = setTimeout(() => {
+            if (scrollTop > 0) {
+                navbar.classList.remove('nav-hidden');
+                navbar.classList.add('nav-visible');
+            }
+        }, 1500);
     });
 
     // Animate skill progress bars when visible

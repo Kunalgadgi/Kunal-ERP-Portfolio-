@@ -1,8 +1,57 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section class="about-hero py-6">
-    <div class="container">
+<style>
+    .skill-card-compact {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+    .skill-card-compact::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(139, 111, 240, 0.1), transparent);
+        transition: left 0.5s;
+    }
+    .skill-card-compact:hover::before {
+        left: 100%;
+    }
+    .skill-card-compact:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(139, 111, 240, 0.3);
+    }
+    .timeline-item {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .timeline-item:hover {
+        transform: translateX(10px);
+    }
+    .timeline-dot {
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(139, 111, 240, 0.4); }
+        50% { box-shadow: 0 0 0 10px rgba(139, 111, 240, 0); }
+    }
+    .cursor-glow {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        transition: opacity 0.3s ease;
+    }
+</style>
+<section class="section-padding position-relative overflow-hidden about-hero-section">
+    <div class="cursor-glow" id="cursorGlowAbout"></div>
+    <div class="container position-relative z-10">
         <div class="row align-items-center gy-5">
             <div class="col-lg-4 text-center">
                 <div class="about-photo-wrapper position-relative">
@@ -14,13 +63,13 @@
                 {% endif %}
             </div>
             <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4"> About <span class="premium-gradient-text">Me</span></h1>
+                <h1 class="display-4 fw-bold mb-4 premium-gradient-text"> About Me</h1>
                 <div class="about-content text-secondary">
                     <p class="mb-4">
-                        I am Kunal Gadgi, a passionate ERPNext Techno-Functional Consultant based in Ahmedabad, Gujarat. With a strong foundation in <strong>Frappe / ERPNext Development</strong> and <strong>Python & Django</strong>, I bridge the gap between complex backend logic and beautiful frontend experiences.
+                        I am Kunal Gadgi, a passionate Freelance Full Stack Developer based in Ahmedabad, Gujarat. With expertise in <strong>Python, Django, AI/ML, Shopify, and modern web technologies</strong>, I build custom solutions for businesses worldwide.
                     </p>
                     <p class="mb-4">
-                        My journey includes significant experience in Python development and ERPNext implementation, which gives me a unique perspective on building secure, reliable, and efficient software. I have worked with diverse clients to implement ERPNext solutions that streamline business processes.
+                        My journey includes developing web applications, e-commerce stores, and AI-powered solutions. I work with clients to create tailored solutions that meet their specific business needs, from simple websites to complex applications.
                     </p>
                 </div>
                 <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center justify-content-lg-start">
@@ -35,8 +84,8 @@
     </div>
 </section>
 
-<section class="py-5">
-    <div class="container">
+<section class="py-5 position-relative overflow-hidden">
+    <div class="container position-relative z-10">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <h2 class="display-5 fw-bold mb-5"> Professional <span class="premium-gradient-text">Experience</span></h2>
@@ -82,8 +131,10 @@
     </div>
 </section>
 
-<section class="py-5">
-    <div class="container">
+<section class="py-5 position-relative overflow-hidden">
+    <div class="ai-glow" style="top: 30%; left: 10%; animation-delay: 4s;"></div>
+    <div class="ai-glow" style="bottom: 30%; right: 10%; animation-delay: 6s;"></div>
+    <div class="container position-relative z-10">
         <div class="text-center mb-4">
             <h2 class="h3 fw-bold"> Technical <span class="premium-gradient-text">Arsenal</span></h2>
             <p class="text-secondary small">My technical toolkit and expertise.</p>
@@ -94,13 +145,13 @@
                     <div class="skill-card-compact-icon">
                         <i class="bi bi-server"></i>
                     </div>
-                    <h3 class="h6 fw-bold mb-3">Frappe & ERPNext</h3>
-                    <p class="text-secondary small mb-3">End-to-end ERPNext implementation, custom Frappe apps, and module development.</p>
+                    <h3 class="h6 fw-bold mb-3">Full Stack Development</h3>
+                    <p class="text-secondary small mb-3">End-to-end web development using Python, Django, React, and modern frameworks.</p>
                     <div class="skill-tags-compact">
-                        <span class="skill-tag-compact">Frappe Framework</span>
-                        <span class="skill-tag-compact">ERPNext</span>
                         <span class="skill-tag-compact">Python</span>
-                        <span class="skill-tag-compact">Custom Apps</span>
+                        <span class="skill-tag-compact">Django</span>
+                        <span class="skill-tag-compact">React</span>
+                        <span class="skill-tag-compact">JavaScript</span>
                     </div>
                 </div>
             </div>
@@ -151,9 +202,9 @@
                         <div class="project-icon-small">
                             <i class="bi bi-github"></i>
                         </div>
-                        <div>
-                            <h3 class="h6 fw-bold mb-0">GUI Registration System</h3>
-                            <span class="badge bg-light text-secondary">Django</span>
+                        <div class="flex-grow-1">
+                            <h3 class="h5 fw-bold mb-1 text-dark">GUI Registration System</h3>
+                            <span class="badge bg-primary text-white">Django</span>
                         </div>
                     </div>
                     <p class="text-secondary small mb-2">User-friendly GUI registration system with database integration using Django ORM.</p>
@@ -166,9 +217,9 @@
                         <div class="project-icon-small">
                             <i class="bi bi-github"></i>
                         </div>
-                        <div>
-                            <h3 class="h6 fw-bold mb-0">Admin Dashboard</h3>
-                            <span class="badge bg-light text-secondary">Django + MySQL</span>
+                        <div class="flex-grow-1">
+                            <h3 class="h5 fw-bold mb-1 text-dark">Admin Dashboard</h3>
+                            <span class="badge bg-primary text-white">Django + MySQL</span>
                         </div>
                     </div>
                     <p class="text-secondary small mb-2">Employee Management System with attendance tracking and data visualizations.</p>
@@ -181,9 +232,9 @@
                         <div class="project-icon-small">
                             <i class="bi bi-github"></i>
                         </div>
-                        <div>
-                            <h3 class="h6 fw-bold mb-0">SkyPOS</h3>
-                            <span class="badge bg-light text-secondary">POS System</span>
+                        <div class="flex-grow-1">
+                            <h3 class="h5 fw-bold mb-1 text-dark">SkyPOS</h3>
+                            <span class="badge bg-primary text-white">POS System</span>
                         </div>
                     </div>
                     <p class="text-secondary small mb-2">Point of Sale system for retail businesses with inventory management and billing.</p>
@@ -196,9 +247,9 @@
                         <div class="project-icon-small">
                             <i class="bi bi-github"></i>
                         </div>
-                        <div>
-                            <h3 class="h6 fw-bold mb-0">CBLU Admission Portal</h3>
-                            <span class="badge bg-light text-secondary">University Portal</span>
+                        <div class="flex-grow-1">
+                            <h3 class="h5 fw-bold mb-1 text-dark">CBLU Admission Portal</h3>
+                            <span class="badge bg-primary text-white">University Portal</span>
                         </div>
                     </div>
                     <p class="text-secondary small mb-2">Admission portal for Chaudhary Bansi Lal University with online application system.</p>
@@ -208,4 +259,24 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cursorGlow = document.getElementById('cursorGlowAbout');
+        const aboutSection = document.querySelector('.about-hero-section');
+        
+        if (aboutSection && cursorGlow) {
+            aboutSection.addEventListener('mousemove', function(e) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+                cursorGlow.style.opacity = '1';
+            });
+            
+            aboutSection.addEventListener('mouseleave', function() {
+                cursorGlow.style.opacity = '0';
+            });
+        }
+    });
+</script>
+
 {% endblock %}

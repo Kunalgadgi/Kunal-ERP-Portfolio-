@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% if profile %}{{ profile.full_name }} | {{ profile.title }}{% else %}ERPNext Consultant Portfolio{% endif %}{% endblock %}</title>
-    <meta name="description" content="{% if profile %}{{ profile.tagline }}{% else %}ERPNext Functional Consultant & Implementation Specialist Portfolio{% endif %}">
+    <title>{% block title %}{% if profile %}{{ profile.full_name }} | {{ profile.title }}{% else %}Freelance Developer Portfolio{% endif %}{% endblock %}</title>
+    <meta name="description" content="{% if profile %}{{ profile.tagline }}{% else %}Freelance Full Stack Developer specializing in Python, Django, Shopify, and modern web technologies.{% endif %}">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
                 <span class="brand-logo">{{ profile.full_name|default:"KG"|slice:":1" }}</span>
                 {% if profile %}{{ profile.full_name }}{% else %}Kunal Gadgi{% endif %}
             </a>
-            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse flex-grow-0" id="navMenu">
@@ -36,7 +36,6 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                     <li class="nav-item"><a class="nav-link {% if '/portfolio' in request.path or '/projects' in request.path %}active-link{% endif %}" href="{% url 'portfolio' %}">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link {% if '/case-studies' in request.path %}active-link{% endif %}" href="{% url 'case_studies' %}">Case Studies</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
                 </ul>
             </div>
             <div class="d-flex align-items-center gap-3">
@@ -76,7 +75,7 @@
                     <div class="footer-underline"></div>
                 </a>
                 <p class="text-secondary mb-4" style="max-width: 400px;">
-                    {% if profile %}{{ profile.tagline }}{% else %}ERPNext Functional Consultant & Implementation Specialist helping businesses streamline operations with Frappe and ERPNext.{% endif %}
+                    {% if profile %}{{ profile.tagline }}{% else %}Freelance Full Stack Developer specializing in Python, Django, Shopify, and modern web technologies.{% endif %}
                 </p>
                 <div>
                     <a href="mailto:{% if profile %}{{ profile.email }}{% else %}gadgikunal202@gmail.com{% endif %}" class="btn btn-outline-primary btn-sm">
@@ -91,17 +90,16 @@
                     <li><a href="{% url 'about' %}"><span class="footer-bullet"></span> About</a></li>
                     <li><a href="{% url 'project_list' %}"><span class="footer-bullet"></span> Portfolio</a></li>
                     <li><a href="{% url 'case_studies' %}"><span class="footer-bullet"></span> Case Studies</a></li>
-                    <li><a href="{% url 'blog' %}"><span class="footer-bullet"></span> Blog</a></li>
                     <li><a href="{% url 'contact' %}"><span class="footer-bullet"></span> Contact</a></li>
                 </ul>
             </div>
             <div class="col-md-4 col-lg-2">
                 <h6 class="fw-bold text-uppercase mb-4" style="letter-spacing: 1px;">Services</h6>
                 <ul class="list-unstyled footer-nav-links">
-                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in ERPNext Development services" target="_blank"><span class="footer-bullet"></span> ERPNext Development</a></li>
-                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in Freelance Consulting services" target="_blank"><span class="footer-bullet"></span> Freelance Consulting</a></li>
-                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in Custom Web Portals services" target="_blank"><span class="footer-bullet"></span> Custom Web Portals</a></li>
-                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in IT Consulting services" target="_blank"><span class="footer-bullet"></span> IT Consulting</a></li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in Web Development services" target="_blank"><span class="footer-bullet"></span> Web Development</a></li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in Shopify Development services" target="_blank"><span class="footer-bullet"></span> Shopify Development</a></li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in Custom Applications services" target="_blank"><span class="footer-bullet"></span> Custom Applications</a></li>
+                    <li><a href="https://wa.me/917226805665?text=Hi, I'm interested in AI/ML Solutions services" target="_blank"><span class="footer-bullet"></span> AI/ML Solutions</a></li>
                 </ul>
             </div>
             <div class="col-md-4 col-lg-3">

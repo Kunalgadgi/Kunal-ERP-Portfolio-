@@ -1,140 +1,244 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section class="section-padding">
-    <div class="container">
+<style>
+    .cursor-glow {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        transition: opacity 0.3s ease;
+    }
+    .portfolio-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .portfolio-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(139, 111, 240, 0.15), transparent);
+        transition: left 0.6s ease;
+        z-index: 1;
+    }
+    .portfolio-card:hover::before {
+        left: 100%;
+    }
+    .portfolio-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 25px 50px rgba(139, 111, 240, 0.35);
+    }
+    .portfolio-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+        border-radius: 16px 16px 0 0;
+    }
+    .portfolio-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    .portfolio-card:hover .portfolio-img-wrapper img {
+        transform: scale(1.15);
+    }
+    .project-badge {
+        background: linear-gradient(135deg, #8b6ff0, #6c5ce7);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        animation: pulse 2.5s infinite;
+        display: inline-block;
+    }
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(139, 111, 240, 0.5); }
+        50% { box-shadow: 0 0 0 12px rgba(139, 111, 240, 0); }
+    }
+    .portfolio-card h5 {
+        transition: color 0.3s ease;
+    }
+    .portfolio-card:hover h5 {
+        color: #8b6ff0;
+    }
+    .portfolio-card p {
+        transition: color 0.3s ease;
+    }
+    .portfolio-card:hover p {
+        color: #555;
+    }
+</style>
+<section class="section-padding position-relative page-hero-section">
+    <div class="cursor-glow" id="cursorGlowProjects"></div>
+    <div class="container position-relative z-10">
         <div class="text-center mb-5">
-            <h1 class="fw-bold mb-4"> Featured <span class="premium-gradient-text">Projects</span></h1>
-            <p class="text-secondary mb-4"> A selection of my work in Web Development, Mobile Apps, and ERP Customization. </p>
+            <span class="section-label">My Work</span>
+            <h1 class="fw-bold mb-4 display-5 premium-gradient-text"> Module Projects</h1>
+            <p class="text-secondary mb-4 lead"> ERPNext module implementations and customizations showcasing my expertise. </p>
         </div>
         <div class="row g-4" id="portfolioGrid">
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="crm">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/CRM.png' %}" alt="CRM">
+                        <img src="{% static 'images/CRM.png' %}" alt="CRM Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">CRM</span>
                         </div>
-                        <h5 class="fw-bold mb-3">CRM</h5>
-                        <p class="text-secondary small mb-0">Customer Relationship Management module for managing leads, opportunities, and customer interactions effectively.</p>
+                        <h5 class="fw-bold mb-3">CRM Module Customization</h5>
+                        <p class="text-secondary small mb-0">Customized CRM module with lead management, opportunity tracking, and automated follow-ups.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="accounting">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/buying.jpg' %}" alt="Buying">
+                        <img src="{% static 'images/accounting.jpg' %}" alt="Accounting Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">Accounting</span>
                         </div>
-                        <h5 class="fw-bold mb-3">Buying</h5>
-                        <p class="text-secondary small mb-0">Purchase management module for handling purchase orders, supplier management, and procurement processes.</p>
+                        <h5 class="fw-bold mb-3">Accounting Module Setup</h5>
+                        <p class="text-secondary small mb-0">Complete accounting module implementation with chart of accounts, taxes, and financial reporting.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="selling">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/selling.jpg' %}" alt="Selling">
+                        <img src="{% static 'images/selling.jpg' %}" alt="Selling Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">Selling</span>
                         </div>
-                        <h5 class="fw-bold mb-3">Selling</h5>
-                        <p class="text-secondary small mb-0">Sales management module for quotations, sales orders, invoices, and customer billing processes.</p>
+                        <h5 class="fw-bold mb-3">Selling Module Integration</h5>
+                        <p class="text-secondary small mb-0">Sales order management, quotation templates, and customer portal integration.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="buying">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/stock.jpg' %}" alt="Stock">
+                        <img src="{% static 'images/buying.jpg' %}" alt="Buying Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">Buying</span>
                         </div>
-                        <h5 class="fw-bold mb-3">Stock</h5>
-                        <p class="text-secondary small mb-0">Inventory management module for tracking stock levels, warehouse management, and stock reconciliation.</p>
+                        <h5 class="fw-bold mb-3">Buying Module Setup</h5>
+                        <p class="text-secondary small mb-0">Purchase order management, supplier portal, and procurement workflow automation.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="stock">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/accounting.jpg' %}" alt="Accounting">
+                        <img src="{% static 'images/stock.jpg' %}" alt="Stock Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">Stock</span>
                         </div>
-                        <h5 class="fw-bold mb-3">Accounting</h5>
-                        <p class="text-secondary small mb-0">Complete accounting module with general ledger, balance sheet, profit & loss, and financial reporting.</p>
+                        <h5 class="fw-bold mb-3">Stock Module Implementation</h5>
+                        <p class="text-secondary small mb-0">Inventory management with barcode scanning, stock reconciliation, and warehouse management.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="manufacturing">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/gst.jpg' %}" alt="GST">
+                        <img src="{% static 'images/manuf.jpg' %}" alt="Manufacturing Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">Manufacturing</span>
                         </div>
-                        <h5 class="fw-bold mb-3">GST</h5>
-                        <p class="text-secondary small mb-0">GST compliance module for Indian businesses with tax calculation, GSTIN management, and report generation.</p>
+                        <h5 class="fw-bold mb-3">Manufacturing Module</h5>
+                        <p class="text-secondary small mb-0">Production planning, bill of materials, and work order management implementation.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="hr">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/manuf.jpg' %}" alt="Manufacturing">
+                        <img src="{% static 'images/hrms.jpg' %}" alt="HR Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">HR</span>
                         </div>
-                        <h5 class="fw-bold mb-3">Manufacturing</h5>
-                        <p class="text-secondary small mb-0">Manufacturing module for production planning, bill of materials, work orders, and shop floor management.</p>
+                        <h5 class="fw-bold mb-3">HR Module Customization</h5>
+                        <p class="text-secondary small mb-0">Employee management, payroll processing, and attendance tracking system.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="projects">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/fcrm.jpg' %}" alt="FCRM">
+                        <img src="{% static 'images/fcrm.jpg' %}" alt="Projects Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">Projects</span>
                         </div>
-                        <h5 class="fw-bold mb-3">FCRM</h5>
-                        <p class="text-secondary small mb-0">Frappe CRM for advanced customer management with lead tracking, email integration, and automation.</p>
+                        <h5 class="fw-bold mb-3">Projects Module Setup</h5>
+                        <p class="text-secondary small mb-0">Project management with task tracking, time logging, and milestone management.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="frappe">
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="gst">
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrapper">
-                        <img src="{% static 'images/HRMS.jpg' %}" alt="HRMS">
+                        <img src="{% static 'images/gst.jpg' %}" alt="GST Module">
                     </div>
                     <div class="p-4">
                         <div class="mb-3">
-                            <span class="project-badge">Frappe/ERPNext</span>
+                            <span class="project-badge">GST</span>
                         </div>
-                        <h5 class="fw-bold mb-3">HRMS</h5>
-                        <p class="text-secondary small mb-0">Human Resource Management System for employee management, payroll, attendance, leave, and HR operations.</p>
+                        <h5 class="fw-bold mb-3">GST Integration</h5>
+                        <p class="text-secondary small mb-0">GST compliance module with tax calculation, e-invoicing, and return filing integration.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cursorGlow = document.getElementById('cursorGlowProjects');
+        const pageSection = document.querySelector('.page-hero-section');
+        
+        if (pageSection && cursorGlow) {
+            pageSection.addEventListener('mousemove', function(e) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+                cursorGlow.style.opacity = '1';
+            });
+            
+            pageSection.addEventListener('mouseleave', function() {
+                cursorGlow.style.opacity = '0';
+            });
+        }
+    });
+</script>
+
 {% endblock %}

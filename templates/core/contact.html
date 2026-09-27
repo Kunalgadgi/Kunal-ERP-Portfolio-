@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-
-<section class="contact-hero" style="padding-top: 160px;">
-    <div class="container">
-        <h1 class="display-4 fw-bold mb-4 text-center"> Get in <span class="premium-gradient-text">Touch</span></h1>
+<section class="contact-hero position-relative overflow-hidden page-hero-section" style="padding-top: 160px;">
+    <div class="cursor-glow" id="cursorGlowContact"></div>
+    <div class="container position-relative z-10">
+        <h1 class="display-4 fw-bold mb-4 text-center premium-gradient-text"> Get in Touch</h1>
         <p class="text-secondary mt-4 mx-auto" style="max-width:640px;">
             Ready to start your project? I'm currently available for freelance work. Contact me
-            for a consultation about Frappe, ERPNext, or Web Development.
+            for a consultation about Web Development, Shopify, or Custom Applications.
         </p>
     </div>
 </section>
@@ -67,4 +67,24 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cursorGlow = document.getElementById('cursorGlowContact');
+        const pageSection = document.querySelector('.page-hero-section');
+        
+        if (pageSection && cursorGlow) {
+            pageSection.addEventListener('mousemove', function(e) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+                cursorGlow.style.opacity = '1';
+            });
+            
+            pageSection.addEventListener('mouseleave', function() {
+                cursorGlow.style.opacity = '0';
+            });
+        }
+    });
+</script>
+
 {% endblock %}
