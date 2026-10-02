@@ -542,7 +542,7 @@ body {
 .stat-item p { color: var(--text-muted); }
 
 /* ===== SECTIONS ===== */
-.section-padding { padding: 100px 0; }
+.section-padding { padding: 60px 0; }
 .section-label {
     color: var(--primary-light);
     font-weight: 700;

@@ -4,10 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const themeIcon = document.getElementById('themeIcon');
     const body = document.body;
 
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    // Check for saved theme preference, otherwise detect system theme
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    
+    body.setAttribute('data-theme', initialTheme);
+    updateThemeIcon(initialTheme);
 
     if (themeToggle) {
         themeToggle.addEventListener('click', function () {
