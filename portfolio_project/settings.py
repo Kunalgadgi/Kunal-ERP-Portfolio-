@@ -138,6 +138,14 @@ ALLOWED_HOSTS = [
 
 
 
+    "erpportfolio.vercel.app",
+
+
+
+    "*.vercel.app",
+
+
+
 ]
 
 
@@ -530,6 +538,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+# Disable email error logging for production
+ADMINS = []
+MANAGERS = []
+
 # Email configuration for the contact form.
 
 
@@ -543,23 +555,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = os.environ.get(
-
-
-
-    'DJANGO_EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend'
-
-
-
-)
-
-
+    'DJANGO_EMAIL_BACKEND'
+) or 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 
 
-
 EMAIL_PORT = 587
-
 
 
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
