@@ -1,54 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<style>
-    .skill-card-compact {
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        overflow: hidden;
-    }
-    .skill-card-compact::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(139, 111, 240, 0.1), transparent);
-        transition: left 0.5s;
-    }
-    .skill-card-compact:hover::before {
-        left: 100%;
-    }
-    .skill-card-compact:hover {
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 20px 40px rgba(139, 111, 240, 0.3);
-    }
-    .timeline-item {
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .timeline-item:hover {
-        transform: translateX(10px);
-    }
-    .timeline-dot {
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(139, 111, 240, 0.4); }
-        50% { box-shadow: 0 0 0 10px rgba(139, 111, 240, 0); }
-    }
-    .cursor-glow {
-        position: fixed;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-        transition: opacity 0.3s ease;
-    }
-</style>
 <section class="section-padding position-relative overflow-hidden about-hero-section">
     <div class="cursor-glow" id="cursorGlowAbout"></div>
     <div class="container position-relative z-10">
@@ -76,8 +28,8 @@
                     <a href="https://github.com/Kunalgadgi" target="_blank" class="social-pill github"><i class="bi bi-github"></i> GitHub</a>
                     <a href="https://www.linkedin.com/in/kunal-gadgi-025b062a1/" target="_blank" class="social-pill linkedin"><i class="bi bi-linkedin"></i> LinkedIn</a>
                     <a href="https://wa.me/917226805665" target="_blank" class="social-pill whatsapp"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-                    <a href="https://twitter.com/yourusername" target="_blank" class="social-pill twitter"><i class="bi bi-twitter-x"></i> X</a>
-                    <a href="https://instagram.com/yourusername" target="_blank" class="social-pill instagram"><i class="bi bi-instagram"></i> Instagram</a>
+                    <a href="" target="_blank" class="social-pill twitter"><i class="bi bi-twitter-x"></i> X</a>
+                    <a href="" target="_blank" class="social-pill instagram"><i class="bi bi-instagram"></i> Instagram</a>
                 </div>
             </div>
         </div>

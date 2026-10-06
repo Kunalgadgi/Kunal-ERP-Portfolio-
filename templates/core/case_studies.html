@@ -1,20 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<style>
-    .cursor-glow {
-        position: fixed;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-        transition: opacity 0.3s ease;
-    }
-</style>
-<section class="section-padding position-relative page-hero-section" style="min-height: 100vh;">
+<section class="section-padding position-relative page-hero-section case-studies-hero">
     <div class="cursor-glow" id="cursorGlowCaseStudies"></div>
     <div class="container position-relative z-10">
         <div class="text-center mb-5">
